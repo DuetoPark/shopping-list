@@ -1,0 +1,24 @@
+{
+  "name": "showping-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -wr --source-map true styles/main.scss style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DuetoPark/showping-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DuetoPark/showping-list/issues"
+  },
+  "homepage": "https://github.com/DuetoPark/showping-list#readme",
+  "dependencies": {
+    "node-sass": "^7.0.1",
+    "sass-lint": "^1.13.1"
+  }
+}
