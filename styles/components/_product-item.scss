@@ -1,0 +1,103 @@
+.product-item {
+  @include flexbox(start);
+  width: 100%;
+  padding: 8px;
+  animation-duration: 150ms;
+  animation-name: bottom-to-top;
+  animation-timing-function: ease-in-out;
+
+  &.is-finished {
+    input {
+      text-decoration: line-through;
+      pointer-events: none;
+      opacity: 0.3;
+    }
+
+    .finish-button {
+      opacity: 0.3;
+    }
+  }
+
+  &.bye-bye {
+    pointer-events: none;
+    animation-duration: 500ms;
+    animation-name: spin;
+    animation-timing-function: ease-in-out;
+  }
+
+  input {
+    @include text-style(14, $primary);
+    flex-grow: 1;
+    height: 32px;
+    padding: 0 8px;
+    transition: opacity 250ms ease-in-out, background-color 150ms ease-in-out;
+
+    &::placeholder {
+      @include text-style(14, $primary);
+      font-weight: 400 !important;
+    }
+
+    &:active,
+    &:focus {
+      font-weight: 700;
+      background-color: rgba($white, 0.2);
+    }
+  }
+
+  button {
+    width: 32px;
+    font-size: 16px;
+    color: $primary;
+    transition: opacity 250ms ease-in-out, background-color 250ms ease-in-out;
+  }
+
+  .finish-button {
+    margin: 0 8px;
+  }
+
+  .delete-button {
+    color: $red;
+  }
+
+  @include responsive(T) {
+    padding: 16px;
+
+    input {
+      @include text-style(16);
+    }
+
+    button {
+      font-size: 20px;
+    }
+
+    .finish-button {
+      margin: 0 16px;
+    }
+  }
+
+  @include responsive(D) {
+    button:hover {
+      background-color: $blue-light;
+    }
+  }
+}
+
+@keyframes bottom-to-top {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: scale(1) rotate(0);
+  }
+
+  100% {
+    transform: scale(0) rotate(720deg);
+  }
+}

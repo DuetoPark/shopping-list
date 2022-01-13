@@ -3,6 +3,7 @@
 @import './constants/breakpoints';
 @import './constants/colors';
 @import './constants/typography';
+@import './constants/dimensions';
 
 @import './base/normalize';
 @import './base/reset';
@@ -17,5 +18,8 @@
 @import './modules/buttons';
 
 @import './components/gnb';
+@import './components/product-item';
 
 @import './layouts/grid';
+@import './layouts/global';
+@import './layouts/shopping-form';
