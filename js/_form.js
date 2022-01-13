@@ -50,6 +50,14 @@ function setDeleteEvent(li) {
   const deleteButton = li.querySelector('.delete-button');
   deleteButton.addEventListener('click', () => {
     li.classList.add('bye-bye');
+  });
+}
+
+function setAnimationendEvent(li) {
+  li.addEventListener('animationend', () => {
+    flag = li.classList.value.includes('bye');
+    if (!flag) return;
+
     productList.removeChild(li);
   });
 }
@@ -73,5 +81,6 @@ form.addEventListener('submit', (e) => {
   showLastItem(li);
   setEventToApplyFinishedStyle(li);
   setDeleteEvent(li);
+  setAnimationendEvent(li);
   init();
 });
