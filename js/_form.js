@@ -58,6 +58,10 @@ function init() {
   input.focus();
 }
 
+function showLastItem(li) {
+  li.scrollIntoView(false);
+}
+
 form.addEventListener('submit', (e) => {
   e.preventDefault();
 
@@ -65,6 +69,7 @@ form.addEventListener('submit', (e) => {
 
   const li = addProductItem();
   setInputValue(li);
+  showLastItem(li);
   setEventToApplyFinishedStyle(li);
   setEventToDeleteProductItem(li);
   init();
