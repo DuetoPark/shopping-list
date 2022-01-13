@@ -1,7 +1,7 @@
 const form = document.shoppingListForm;
 const productList = document.querySelector('.product-list');
-const input = document.querySelector('.input input');
 let flag = true;
+const input = document.querySelector('.input-group input');
 
 function addProductItem() {
   const li = document.createElement('li');
