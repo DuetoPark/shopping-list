@@ -1,7 +1,7 @@
 const form = document.shoppingListForm;
 const productList = document.querySelector('.product-list');
-let flag = true;
 const input = document.querySelector('.input-group input');
+let flag = null;
 const emoji = ['👽', '😎', '🌙', '🔥', '👀', '🦄', '🐻', '💜', '🐛', '🌈', '🍅'];
 
 function addProductItem() {
@@ -46,9 +46,10 @@ function setEventToApplyFinishedStyle(li) {
   });
 }
 
-function setEventToDeleteProductItem(li) {
+function setDeleteEvent(li) {
   const deleteButton = li.querySelector('.delete-button');
   deleteButton.addEventListener('click', () => {
+    li.classList.add('bye-bye');
     productList.removeChild(li);
   });
 }
@@ -71,18 +72,6 @@ form.addEventListener('submit', (e) => {
   setInputValue(li);
   showLastItem(li);
   setEventToApplyFinishedStyle(li);
-  setEventToDeleteProductItem(li);
+  setDeleteEvent(li);
   init();
-});
-
-const selectAllButton = document.querySelector('.select-all');
-
-selectAllButton.addEventListener('click', () => {
-  const productItems = document.querySelectorAll('.product-item');
-
-  productItems.forEach((item) => {
-    item.classList[flag ? 'add' : 'remove']('is-finished');
-  });
-
-  flag = flag ? false : true;
 });
