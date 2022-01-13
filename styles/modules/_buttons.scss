@@ -1,0 +1,18 @@
+%btn-base {
+  @include flexbox;
+  border-radius: 4px;
+
+  &:active {
+    background-color: $blue-light;
+  }
+}
+
+.btn-32 {
+  @extend %btn-base;
+  height: 32px;
+}
+
+.btn-40 {
+  @extend %btn-base;
+  height: 40px;
+}
