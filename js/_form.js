@@ -10,13 +10,26 @@ function addProductItem() {
   li.setAttribute('class', 'product-item');
 
   li.innerHTML = `
-    <input type="text" />
-    <button class="finish-button" type="button">완료</button>
-    <button class="delete-button" type="button">삭제</button>
-  `;
+    <input type="text" placeholder="구매하실 물건을 입력해주세요" />
 
   const inputInProductItem = li.querySelector('input');
   inputInProductItem.value = input.value;
+    <button
+      class="btn-32 finish-button"
+      type="button"
+      aria-label="완료"
+    >
+      <i class="ic-check" aria-hidden="true"></i>
+    </button>
+
+    <button
+      class="btn-32 delete-button"
+      type="button"
+      aria-label="삭제"
+    >
+      <i class="ic-trash" aria-hidden="true"></i>
+    </button>
+  `;
 
   return li;
 }
