@@ -18,17 +18,9 @@
     margin: $input-group-margin-sm 0;
 
     input {
-      @include text-style(14, $dark);
-      flex-grow: 1;
       height: 40px;
-      padding: 0 8px;
       margin-right: 8px;
       background-color: $white;
-      border: 1px solid transparent;
-
-      &::placeholder {
-        @include text-style(14, $secondary);
-      }
     }
 
     .submit-button {

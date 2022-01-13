@@ -26,15 +26,12 @@
   }
 
   input {
-    @include text-style(14, $primary);
-    flex-grow: 1;
     height: 32px;
-    padding: 0 8px;
+    color: $primary;
     transition: opacity 250ms ease-in-out, background-color 150ms ease-in-out;
 
     &::placeholder {
-      @include text-style(14, $primary);
-      font-weight: 400 !important;
+      color: $primary;
     }
 
     &:active,
