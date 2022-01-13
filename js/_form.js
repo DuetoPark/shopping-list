@@ -2,6 +2,7 @@ const form = document.shoppingListForm;
 const productList = document.querySelector('.product-list');
 let flag = true;
 const input = document.querySelector('.input-group input');
+const emoji = ['👽', '😎', '🌙', '🔥', '👀', '🦄', '🐻', '💜', '🐛', '🌈', '🍅'];
 
 function addProductItem() {
   const li = document.createElement('li');
@@ -12,8 +13,6 @@ function addProductItem() {
   li.innerHTML = `
     <input type="text" placeholder="구매하실 물건을 입력해주세요" />
 
-  const inputInProductItem = li.querySelector('input');
-  inputInProductItem.value = input.value;
     <button
       class="btn-32 finish-button"
       type="button"
@@ -32,6 +31,12 @@ function addProductItem() {
   `;
 
   return li;
+}
+
+function setInputValue(li) {
+  const inputInProductItem = li.querySelector('input');
+  const randomNum = Math.floor(Math.random() * emoji.length);
+  inputInProductItem.value = `${emoji[randomNum]} ${input.value}`;
 }
 
 function setEventToApplyFinishedStyle(li) {
@@ -59,6 +64,7 @@ form.addEventListener('submit', (e) => {
   if (!input.value) return;
 
   const li = addProductItem();
+  setInputValue(li);
   setEventToApplyFinishedStyle(li);
   setEventToDeleteProductItem(li);
   init();
