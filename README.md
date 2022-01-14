@@ -5,6 +5,8 @@
 ### [Wiki](https://github.com/DuetoPark/showping-list/wiki)
 ### [지금보다 더 못할 때 만든 체크리스트 Github](https://github.com/DuetoPark/to-do-list)
 
+<img width="1137" alt="img-thumbnail" src="https://user-images.githubusercontent.com/69448900/149531689-0c53f895-4516-4a59-86fb-8fc6343dbed7.png">
+
 ## 🔨 주요기능
 ### 1. 쇼핑 목록 추가
 - 사용자가 값을 입력합니다.
