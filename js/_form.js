@@ -4,7 +4,7 @@ const input = document.querySelector('.input-group input');
 let flag = null;
 const emoji = ['👽', '😎', '🌙', '🔥', '👀', '🦄', '🐻', '💜', '🐛', '🌈', '🍅'];
 
-function addProductItem() {
+function createItem() {
   const li = document.createElement('li');
   productList.appendChild(li);
 
@@ -39,21 +39,19 @@ function setInputValue(li) {
   inputInProductItem.value = `${emoji[randomNum]} ${input.value}`;
 }
 
-function setEventToApplyFinishedStyle(li) {
+function onFinish(li) {
   const finishButton = li.querySelector('.finish-button');
   finishButton.addEventListener('click', () => {
     li.classList.toggle('is-finished');
   });
 }
 
-function setDeleteEvent(li) {
+function onDelete(li) {
   const deleteButton = li.querySelector('.delete-button');
   deleteButton.addEventListener('click', () => {
     li.classList.add('bye-bye');
   });
-}
 
-function setAnimationendEvent(li) {
   li.addEventListener('animationend', () => {
     flag = li.classList.value.includes('bye');
     if (!flag) return;
@@ -76,11 +74,10 @@ form.addEventListener('submit', (e) => {
 
   if (!input.value) return;
 
-  const li = addProductItem();
+  const li = createItem();
   setInputValue(li);
   showLastItem(li);
-  setEventToApplyFinishedStyle(li);
-  setDeleteEvent(li);
-  setAnimationendEvent(li);
+  onFinish(li);
+  onDelete(li);
   init();
 });
