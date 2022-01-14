@@ -5,30 +5,34 @@ let flag = null;
 const emoji = ['👽', '😎', '🌙', '🔥', '👀', '🦄', '🐻', '💜', '🐛', '🌈', '🍅'];
 
 function createItem() {
-  const li = document.createElement('li');
-  productList.appendChild(li);
+  const frag = document.createDocumentFragment();
 
+  const li = document.createElement('li');
   li.setAttribute('class', 'product-item');
 
-  li.innerHTML = `
-    <input type="text" placeholder="구매하실 물건을 입력해주세요" />
+  frag.appendChild(li);
 
-    <button
-      class="btn-32 finish-button"
-      type="button"
-      aria-label="완료"
-    >
-      <i class="ic-check" aria-hidden="true"></i>
-    </button>
+  const input = document.createElement('input');
+  input.setAttribute('type', 'text');
+  input.setAttribute('placeholder', '구매하실 물건을 입력해주세요');
 
-    <button
-      class="btn-32 delete-button"
-      type="button"
-      aria-label="삭제"
-    >
-      <i class="ic-trash" aria-hidden="true"></i>
-    </button>
-  `;
+  const finishBtn = document.createElement('button');
+  finishBtn.setAttribute('class', 'btn-32 finish-button');
+  finishBtn.setAttribute('type', 'button');
+  finishBtn.setAttribute('aria-label', '구매 완료');
+  finishBtn.innerHTML = '<i class="ic-check" aria-hidden="true"></i>';
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.setAttribute('class', 'btn-32 delete-button');
+  deleteBtn.setAttribute('type', 'button');
+  deleteBtn.setAttribute('aria-label', '목록 삭제');
+  deleteBtn.innerHTML = '<i class="ic-trash" aria-hidden="true"></i>';
+
+  li.appendChild(input);
+  li.appendChild(finishBtn);
+  li.appendChild(deleteBtn);
+
+  productList.appendChild(frag);
 
   return li;
 }
