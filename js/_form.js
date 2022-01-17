@@ -27,28 +27,27 @@ function createItem() {
   return li;
 }
 
-function setInputValue(li) {
+function onAdd(li) {
   const inputInProductItem = li.querySelector('input');
   const randomNum = Math.floor(Math.random() * emoji.length);
   inputInProductItem.value = `${emoji[randomNum]} ${input.value}`;
-}
 
-function onDelete(li) {
-  li.addEventListener('animationend', () => {
-    flag = li.classList.value.includes('bye');
-    if (!flag) return;
-
-    productList.removeChild(li);
-  });
-}
-
-function showLastItem(li) {
   li.scrollIntoView(false);
-}
 
-function init() {
   input.value = '';
   input.focus();
+}
+
+function onFinish(item) {
+  item.classList.toggle('is-finished');
+}
+
+function onDelete(item) {
+  item.classList.add('bye-bye');
+
+  item.addEventListener('animationend', () => {
+    productList.removeChild(item);
+  });
 }
 
 form.addEventListener('submit', (e) => {
@@ -56,10 +55,7 @@ form.addEventListener('submit', (e) => {
   if (!input.value) return;
 
   const li = createItem();
-  setInputValue(li);
-  showLastItem(li);
-  onDelete(li);
-  init();
+  onAdd(li);
 });
 
 productList.addEventListener('click', (event) => {
@@ -67,15 +63,15 @@ productList.addEventListener('click', (event) => {
 
   if (!id) return;
 
-  const toBeDeleted = document.querySelector(`.product-item[data-id='${id}']`);
+  const isSelected = document.querySelector(`.product-item[data-id='${id}']`);
   const finishBtn = document.querySelector(`.finish-button[data-id='${id}']`);
   const deleteBtn = document.querySelector(`.delete-button[data-id='${id}']`);
 
   if (event.target === finishBtn) {
-    toBeDeleted.classList.toggle('is-finished');
+    onFinish(isSelected);
   }
 
   if (event.target === deleteBtn) {
-    toBeDeleted.classList.add('bye-bye');
+    onDelete(isSelected);
   }
 });
