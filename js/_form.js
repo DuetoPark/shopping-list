@@ -3,36 +3,27 @@ const productList = document.querySelector('.product-list');
 const input = document.querySelector('.input-group input');
 let flag = null;
 const emoji = ['👽', '😎', '🌙', '🔥', '👀', '🦄', '🐻', '💜', '🐛', '🌈', '🍅'];
+let id = 0;
 
 function createItem() {
-  const frag = document.createDocumentFragment();
-
   const li = document.createElement('li');
   li.setAttribute('class', 'product-item');
+  li.setAttribute('data-id', id);
+  li.innerHTML = `
+    <input type="text" placeholder="구매하실 물건을 입력해주세요"/>
 
-  frag.appendChild(li);
+    <button class="btn-32 finish-button" type="button" aria-label="구매 완료" data-id=${id}>
+      <i class="ic-check" aria-hidden="true"></i>
+    </button>
+    
+    <button class="btn-32 delete-button" type="button" aria-label="목록 삭제" data-id=${id}>
+      <i class="ic-trash" aria-hidden="true"></i>
+    </button>
+  `;
 
-  const input = document.createElement('input');
-  input.setAttribute('type', 'text');
-  input.setAttribute('placeholder', '구매하실 물건을 입력해주세요');
+  productList.appendChild(li);
 
-  const finishBtn = document.createElement('button');
-  finishBtn.setAttribute('class', 'btn-32 finish-button');
-  finishBtn.setAttribute('type', 'button');
-  finishBtn.setAttribute('aria-label', '구매 완료');
-  finishBtn.innerHTML = '<i class="ic-check" aria-hidden="true"></i>';
-
-  const deleteBtn = document.createElement('button');
-  deleteBtn.setAttribute('class', 'btn-32 delete-button');
-  deleteBtn.setAttribute('type', 'button');
-  deleteBtn.setAttribute('aria-label', '목록 삭제');
-  deleteBtn.innerHTML = '<i class="ic-trash" aria-hidden="true"></i>';
-
-  li.appendChild(input);
-  li.appendChild(finishBtn);
-  li.appendChild(deleteBtn);
-
-  productList.appendChild(frag);
+  id += 1;
 
   return li;
 }
@@ -43,19 +34,7 @@ function setInputValue(li) {
   inputInProductItem.value = `${emoji[randomNum]} ${input.value}`;
 }
 
-function onFinish(li) {
-  const finishButton = li.querySelector('.finish-button');
-  finishButton.addEventListener('click', () => {
-    li.classList.toggle('is-finished');
-  });
-}
-
 function onDelete(li) {
-  const deleteButton = li.querySelector('.delete-button');
-  deleteButton.addEventListener('click', () => {
-    li.classList.add('bye-bye');
-  });
-
   li.addEventListener('animationend', () => {
     flag = li.classList.value.includes('bye');
     if (!flag) return;
@@ -64,24 +43,40 @@ function onDelete(li) {
   });
 }
 
+function showLastItem(li) {
+  li.scrollIntoView(false);
+}
+
 function init() {
   input.value = '';
   input.focus();
 }
 
-function showLastItem(li) {
-  li.scrollIntoView(false);
-}
-
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-
   if (!input.value) return;
 
   const li = createItem();
   setInputValue(li);
   showLastItem(li);
-  onFinish(li);
   onDelete(li);
   init();
+});
+
+productList.addEventListener('click', (event) => {
+  const id = event.target.dataset.id;
+
+  if (!id) return;
+
+  const toBeDeleted = document.querySelector(`.product-item[data-id='${id}']`);
+  const finishBtn = document.querySelector(`.finish-button[data-id='${id}']`);
+  const deleteBtn = document.querySelector(`.delete-button[data-id='${id}']`);
+
+  if (event.target === finishBtn) {
+    toBeDeleted.classList.toggle('is-finished');
+  }
+
+  if (event.target === deleteBtn) {
+    toBeDeleted.classList.add('bye-bye');
+  }
 });

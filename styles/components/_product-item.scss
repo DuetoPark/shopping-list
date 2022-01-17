@@ -46,6 +46,10 @@
     font-size: 16px;
     color: $primary;
     transition: opacity 250ms ease-in-out, background-color 250ms ease-in-out;
+
+    i {
+      pointer-events: none;
+    }
   }
 
   .finish-button {
