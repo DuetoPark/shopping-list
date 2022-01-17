@@ -3,12 +3,15 @@ const productList = document.querySelector('.product-list');
 const input = document.querySelector('.input-group input');
 let flag = null;
 const emoji = ['👽', '😎', '🌙', '🔥', '👀', '🦄', '🐻', '💜', '🐛', '🌈', '🍅'];
-let id = 0;
 
 function createItem() {
+  const id = uuidv4();
+
   const li = document.createElement('li');
   li.setAttribute('class', 'product-item');
   li.setAttribute('data-id', id);
+  productList.appendChild(li);
+
   li.innerHTML = `
     <input type="text" placeholder="구매하실 물건을 입력해주세요"/>
 
@@ -20,10 +23,6 @@ function createItem() {
       <i class="ic-trash" aria-hidden="true"></i>
     </button>
   `;
-
-  productList.appendChild(li);
-
-  id += 1;
 
   return li;
 }
