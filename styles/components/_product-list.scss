@@ -1,0 +1,16 @@
+.product-list {
+  @include no-scrollbar;
+
+  $bottom-height-sm: $input-group-height-sm + $input-group-margin-sm * 2;
+
+  height: calc(100vh - #{$gnb-height-sm} - #{$bottom-height-sm});
+  padding: 8px 0;
+  border: 1px solid $border;
+
+  @include responsive(T) {
+    $bottom-height-md: $input-group-height-md + $input-group-margin-md * 2;
+
+    height: calc(100vh - #{$gnb-height-md} - #{$bottom-height-md});
+    padding: 16px 0;
+  }
+}

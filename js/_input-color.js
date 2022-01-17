@@ -1,4 +1,4 @@
-const input = document.querySelector('.input-group input');
+const input = document.querySelector('.shopping-form input');
 let inputInterval = null;
 let hue = 0;
 

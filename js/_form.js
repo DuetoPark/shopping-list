@@ -1,6 +1,6 @@
-const form = document.shoppingListForm;
+const form = document.shoppingForm;
 const productList = document.querySelector('.product-list');
-const input = document.querySelector('.input-group input');
+const input = document.querySelector('.shopping-form input');
 let flag = null;
 const emoji = ['👽', '😎', '🌙', '🔥', '👀', '🦄', '🐻', '💜', '🐛', '🌈', '🍅'];
 

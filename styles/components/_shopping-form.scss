@@ -1,0 +1,44 @@
+.shopping-form {
+  @include flexbox(start);
+  padding: 12px;
+  margin: $input-group-margin-sm 0;
+  border: 1px solid $border;
+
+  input {
+    height: 40px;
+    margin-right: 8px;
+    background-color: $white;
+  }
+
+  .submit-button {
+    width: 40px;
+    color: $dark;
+    transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+
+    i {
+      transform: translate(-2px);
+    }
+  }
+
+  @include responsive(T) {
+    padding: 24px;
+    margin: $input-group-margin-md 0;
+
+    input {
+      @include text-style(16, $dark);
+      padding: 0 16px;
+      margin-right: 16px;
+    }
+
+    .submit-button {
+      width: 54px;
+    }
+  }
+
+  @include responsive(D) {
+    .submit-button:hover {
+      color: $white;
+      background-color: $blue-light;
+    }
+  }
+}
