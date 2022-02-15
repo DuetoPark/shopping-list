@@ -7,25 +7,50 @@
 
 <img width="1137" alt="img-thumbnail" src="https://user-images.githubusercontent.com/69448900/149531689-0c53f895-4516-4a59-86fb-8fc6343dbed7.png">
 
-## 🔨 주요기능
-### 1. 쇼핑 목록 추가
-- 사용자가 값을 입력합니다.
-- Submit 이벤트로 인해, 목록에 요소가 추가됩니다.
-- 요소를 클릭하면 값을 수정할 수 있습니다.
+## 🔥 코드 비교
 
-### 2. 쇼핑 목록 삭제
-- 사용자가 삭제 버튼을 클릭합니다.
-- 목록이 빙글빙글 돌며 사라집니다.
+| 구분        | 개선 전                                              | 개선 후                              |
+| ----------- | ---------------------------------------------------- | ------------------------------------ |
+| 이벤트 종류 | `click`이벤트, `keydown`이벤트                      | `submit` 이벤트                          |
+| 이벤트 적용 | HTML onclick attr & Javascript addEventListener 혼용 | Javascript `addEventListener`로 통일 |
+| 값 설정     | innerHTML 👉 "와 +연산자                             | 템플릿 리터럴 사용으로 가독성 향상   |
 
-### 3. 구매 완료 표시
-- 사용자가 완료 버튼을 클릭합니다.
-- 텍스트에 줄이 그어지며 색이 옅어집니다.
-- 완료가 된 요소는 텍스트를 수정할 수 없습니다.
+### 1. 개선 전
+```javascript
+function newList(cnt) {
+  var appendList = document.createElement('p')
+  appendList.setAttribute('id', 'p' + cnt)
+  appendList.textContent = data.value
+  appendList.innerHTML ="<input type='checkbox' id='ckbox" + cnt + "' onclick='checkedEvent(" + cnt + ")' ><label for='ckbox" + cnt + "'></label>" + appendList.textContent + " <button onclick='remove(" + cnt + ")' class='setting_X_button'>X</button>"
+  toDoList.appendChild(appendList)
+}
+```
 
-### 그 외
-- 반응형 디자인 구현 완료
-- 값을 입력하는 동안, 요소의 배경색 변경 🌈
-- 목록 추가될 때, 텍스트 왼쪽에 랜덤 이모지 선정
+### 2. 개선 후
+```javascript
+function createItem() {
+  const id = uuidv4();
+
+  const li = document.createElement('li');
+  li.setAttribute('class', 'product-item');
+  li.setAttribute('data-id', id);
+  productList.appendChild(li);
+
+  li.innerHTML = `
+    <input type="text" placeholder="구매하실 물건을 입력해주세요"/>
+
+    <button class="btn-32 finish-button" type="button" aria-label="구매 완료" data-id=${id}>
+      <i class="ic-check" aria-hidden="true"></i>
+    </button>
+    
+    <button class="btn-32 delete-button" type="button" aria-label="목록 삭제" data-id=${id}>
+      <i class="ic-trash" aria-hidden="true"></i>
+    </button>
+  `;
+
+  return li;
+}
+```
 
 ## 📆 제작기간
 2022.01.11 ~ 2022.01.14
