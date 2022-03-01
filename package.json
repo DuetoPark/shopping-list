@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "node-sass -wr --source-map true styles/main.scss style.css"
+    "sass": "node-sass -wr --source-map true styles/main.scss style.css",
+    "sass:build": "node-sass -r --source-map true styles/main.scss style.css",
+    "build": "node ./scripts/build.js",
+    "deploy": "npm run sass:build && npm run build && node ./scripts/deploy.js"
   },
   "repository": {
     "type": "git",
