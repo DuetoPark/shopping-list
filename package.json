@@ -20,5 +20,14 @@
   "dependencies": {
     "node-sass": "^7.0.1",
     "sass-lint": "^1.13.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "cssnano": "^5.0.17",
+    "fs-extra": "^10.0.1",
+    "gh-pages": "^3.2.3",
+    "imagemin": "^8.0.1",
+    "imagemin-jpegtran": "^7.0.0",
+    "postcss": "^8.4.7"
   }
 }
