@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Dueto Park" />
+    <meta name="keywords" content="Shopping list, Fun" />
+    <meta name="description" content="이상한 사람이 만든 이상한 쇼핑목록" />
+
+    <title>Shopping List</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/tomorrow-house/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/tomorrow-house/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/tomorrow-house/favicon-16x16.png" />
+    <link rel="manifest" href="/tomorrow-house/site.webmanifest" />
+    <link
+      href="https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header class="global-header">
+      <div class="gnb">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4">
+              <h1 class="title">
+                <a href="./index.html" title="이상한 쇼핑리스트">
+                  <i aria-hidden="true">✨</i>
+                  이상한 쇼핑리스트
+                  <i aria-hidden="true">👽</i>
+                </a>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="shopping-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 col-md-6 col-lg-6">
+            <ul class="product-list">
+              <!-- NOTE: Product Item -->
+            </ul>
+
+            <form class="shopping-form" name="shoppingForm" method="post">
+              <input type="text" placeholder="구매하실 물건을 입력해주세요" />
+              <button
+                class="btn-40 submit-button"
+                type="submit"
+                aria-label="입력"
+              >
+                <i aria-hidden="true">⏎</i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
+    <script type="module" src="./js/_form.js"></script>
+    <script type="module" src="./js/_title-color.js"></script>
+    <script type="module" src="./js/_input-color.js"></script>
+  </body>
+</html>
