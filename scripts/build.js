@@ -7,7 +7,7 @@ const cssnano = require('cssnano')
 const autoprefixer = require('autoprefixer')
 const imageminJpegtran = require('imagemin-jpegtran')
 
-const REPOSITORY_NAME = 'tomorrow-house'
+const REPOSITORY_NAME = 'shopping-list'
 const buildDir = path.resolve(__dirname, '../build')
 
 const faviconFileList = [
